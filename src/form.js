@@ -19,14 +19,14 @@ export function initDealerForm() {
       const payload = Object.fromEntries(fd.entries());
       payload.source = location.href;
 
-      // honeypot (if filled, silently act like success)
+      // honeypo 
       if (payload.website && String(payload.website).trim() !== "") {
         form.reset();
         msg.textContent = "Thanks — we’ll reach out shortly.";
         return;
       }
 
-      // basic client-side validation
+      // client-side validation
       const digits = String(payload.phone || "").replace(/\D/g, "");
       if (digits.length < 10) {
         msg.textContent = "Enter a valid phone (10 digits).";
