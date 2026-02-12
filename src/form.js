@@ -26,7 +26,7 @@ export function initDealerForm() {
         return;
       }
 
-      // basic client-side validation (optional)
+      // basic client-side validation
       const digits = String(payload.phone || "").replace(/\D/g, "");
       if (digits.length < 10) {
         msg.textContent = "Enter a valid phone (10 digits).";
