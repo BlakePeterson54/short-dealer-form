@@ -19,7 +19,8 @@ export function initDealerForm() {
       const payload = Object.fromEntries(fd.entries());
       payload.source = location.href;
 
-      // honeypo 
+      // honeypot
+
       if (payload.website && String(payload.website).trim() !== "") {
         form.reset();
         msg.textContent = "Thanks — we’ll reach out shortly.";
