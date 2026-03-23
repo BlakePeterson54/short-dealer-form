@@ -55,6 +55,3 @@ Set your endpoint in one of these ways:
 
 ## Deployment
 Deployed via Cloudflare Pages with a connected GitHub repo.
-
-## Disclaimer
-This repo is shared as a portfolio project. Any company-specific endpoints, sheets, or internal identifiers should be kept private.
