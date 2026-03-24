@@ -1,6 +1,5 @@
 export function initDealerForm() {
-  const ENDPOINT =
-    "https://script.google.com/macros/s/AKfycbxMe0mQNVKBSIS7bFWYdd6kXr3_3No_sXeVb3HmbDSOknuu8XMtf37OX3SJhsAGLtbLcw/exec";
+  const ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT;
 
   const form = document.querySelector("#dealerForm");
   const msg = document.querySelector("#formMsg");
@@ -20,7 +19,6 @@ export function initDealerForm() {
       payload.source = location.href;
 
       // honeypot
-
       if (payload.website && String(payload.website).trim() !== "") {
         form.reset();
         msg.textContent = "Thanks — we’ll reach out shortly.";
@@ -38,9 +36,18 @@ export function initDealerForm() {
         return;
       }
 
+      // demo mode submit
+      if (!ENDPOINT) {
+        form.reset();
+        msg.textContent = "Thanks — we’ll reach out shortly.";
+        console.log({ demo: true, payload });
+        if (btn) btn.disabled = false;
+        return;
+      }
+
       const res = await fetch(ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" }, // avoids CORS preflight
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload),
       });
 
